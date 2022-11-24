@@ -37,7 +37,11 @@ else:
     print("forgor 💀\n")
     print("Usage:")
     print("$> forgor <page name>")
-    print("Available pages:")
+    print("Pages are stored in " + make_path(""))
     files = get_files()
-    for file in files:
-        print(" • " + file)
+    if len(files) == 0:
+        print("No pages found.")
+    else:
+        print("Available pages:")
+        for file in files:
+            print(" • " + file)
