@@ -7,6 +7,17 @@ def make_path(filename):
     return home + "/.forgor/" + filename
 
 
+def list_pages():
+    files = get_files()
+    if len(files) == 0:
+        print("No pages found.")
+    else:
+        print("Available pages:")
+        for file in files:
+            print(" • " + file)
+    print("Pages are stored in " + make_path(""))
+
+
 def get_files():
     from os import listdir
     from os.path import isfile, join
@@ -20,9 +31,8 @@ def forgor(name):
     try:
         f = open(make_path(name), "r")
     except OSError:
-        print("Could not read \"" + name + "\"")
-        print("Searched in:")
-        print(make_path(name))
+        print("Could not read page \"" + name + "\"")
+        list_pages()
         return
     text = f.read()
     f.close()
@@ -37,11 +47,4 @@ else:
     print("forgor 💀\n")
     print("Usage:")
     print("$> forgor <page name>")
-    print("Pages are stored in " + make_path(""))
-    files = get_files()
-    if len(files) == 0:
-        print("No pages found.")
-    else:
-        print("Available pages:")
-        for file in files:
-            print(" • " + file)
+    list_pages()
