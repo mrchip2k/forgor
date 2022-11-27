@@ -1,6 +1,10 @@
 import sys
 
 
+# i'm blue da be di da be die
+print("\033[0;94m", end='')
+
+
 def make_path(filename):
     from os.path import expanduser
     home = expanduser("~")
@@ -48,3 +52,6 @@ else:
     print("Usage:")
     print("$> forgor <page name>")
     list_pages()
+
+# Reset
+print("\033[0m", end='')
